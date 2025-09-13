@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < grid.getChildCount(); i++) {
             Button curButton = (Button) grid.getChildAt(i);
             curButton.setOnClickListener(buttonListener);
+
+            Button resetButton = findViewById(R.id.reset_button);
+            resetButton.setOnClickListener(reset);
         }
     }
 
@@ -108,6 +111,18 @@ public class MainActivity extends AppCompatActivity {
         int lightsOn = countLightsOn();
         lightsCountTextView.setText("Lights on: " + lightsOn);
     }
+    View.OnClickListener reset = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            for (int i = 0; i < GRID_SIZE; i++) {
+                for (int j = 0; j < GRID_SIZE; j++) {
+                    cellState[i][j] = false;
+                }
+            }
+            recolor();
+            updateLightsCount();
+        }
+    };
 }
 
 
