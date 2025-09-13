@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
             Button resetButton = findViewById(R.id.reset_button);
             resetButton.setOnClickListener(reset);
+
+            Button randomizeButton = findViewById(R.id.randomize_button);
+            randomizeButton.setOnClickListener(randomizeListener);
+
         }
     }
 
@@ -119,6 +123,14 @@ public class MainActivity extends AppCompatActivity {
                     cellState[i][j] = false;
                 }
             }
+            recolor();
+            updateLightsCount();
+        }
+    };
+    View.OnClickListener randomizeListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            randomize();
             recolor();
             updateLightsCount();
         }
